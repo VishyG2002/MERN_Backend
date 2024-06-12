@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import booksRoute from './routes/booksRoute.js';
 import cors from 'cors';
 
+const PORT = process.env.PORT || 5555
+
 const app = express();
 
 app.use(express.json());
@@ -23,7 +25,7 @@ app.use('/books', booksRoute)
 
 
 mongoose
-    .connect(mongoDBURL)
+    .connect(process.env.mongoDBURL)
     .then(() =>{
         console.log("Database Connected Sucessfully");
         app.listen(PORT,() =>{
